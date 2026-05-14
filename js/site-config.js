@@ -6,7 +6,7 @@
  */
 window.__SITE_CONFIG__ = {
   /** Ex.: "https://seu-projeto.vercel.app/api/send-comment" — vazio = só localStorage */
-  commentsApiUrl: "https://rpgresenha-b19oztnja-christian-lucio.vercel.app/api/send-comment",
+  commentsApiUrl: "https://rpgresenha.vercel.app/api/send-comment",
   /** Opcional: mesmo valor da variável COMMENTS_HOOK_SECRET no servidor */
   commentsClientSecret: "",
 };
