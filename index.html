@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Os Sete Amaldiçoados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;700&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/global.css" />
+  </head>
+  <body>
+    <div class="controls-fixed" aria-label="Controles de leitura">
+      <button type="button" id="btn-font-minus" aria-label="Diminuir fonte">−</button>
+      <button type="button" id="btn-font-plus" aria-label="Aumentar fonte">+</button>
+      <button type="button" id="btn-theme">☀ Modo Claro</button>
+    </div>
+
+    <main class="home-main">
+      <svg
+        class="home-orb"
+        width="160"
+        height="160"
+        viewBox="0 0 160 160"
+        aria-hidden="true"
+      >
+        <circle cx="80" cy="80" r="72" fill="none" stroke="var(--accent)" stroke-width="0.5" opacity="0.15" />
+        <circle cx="80" cy="80" r="56" fill="none" stroke="var(--accent)" stroke-width="0.5" opacity="0.22" />
+        <circle cx="80" cy="80" r="38" fill="none" stroke="var(--accent)" stroke-width="0.5" opacity="0.28" />
+        <circle cx="80" cy="80" r="20" fill="none" stroke="var(--accent)" stroke-width="0.5" opacity="0.35" />
+        <line x1="18" y1="42" x2="142" y2="118" stroke="var(--accent)" stroke-width="0.5" opacity="0.2" />
+        <line x1="28" y1="120" x2="132" y2="38" stroke="var(--accent)" stroke-width="0.5" opacity="0.18" />
+        <line x1="52" y1="22" x2="108" y2="138" stroke="var(--accent)" stroke-width="0.5" opacity="0.16" />
+        <line x1="12" y1="88" x2="148" y2="72" stroke="var(--accent)" stroke-width="0.5" opacity="0.14" />
+        <line x1="78" y1="12" x2="92" y2="148" stroke="var(--accent)" stroke-width="0.5" opacity="0.2" />
+        <circle cx="80" cy="80" r="4" fill="var(--accent)" opacity="0.9" />
+      </svg>
+
+      <p class="home-eyebrow">Uma história que se escreve com escolhas</p>
+      <h1 class="home-title">
+        <span class="t1">Os Sete</span>
+        <span class="t2"> Amaldiçoados</span>
+      </h1>
+      <p class="home-sub">
+        O livro existe. As páginas esperam. Algumas ainda não foram escritas.
+      </p>
+
+      <div id="continue-card" class="continue-card" role="button" tabindex="0">
+        <div class="label">Continuar lendo</div>
+        <div class="chapter-title"></div>
+      </div>
+
+      <nav class="nav-grid" aria-label="Navegação principal">
+        <div class="nav-cell">
+          <div class="nav-cell__art" aria-hidden="true">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <rect x="10" y="8" width="36" height="40" rx="1" stroke="var(--accent)" stroke-width="1.2" fill="var(--bg3)" opacity="0.6" />
+              <line x1="16" y1="18" x2="40" y2="18" stroke="var(--text2)" stroke-width="0.8" />
+              <line x1="16" y1="24" x2="36" y2="24" stroke="var(--text2)" stroke-width="0.8" />
+              <line x1="16" y1="30" x2="38" y2="30" stroke="var(--text2)" stroke-width="0.8" />
+              <path d="M28 36 L28 44 M24 40 L32 40" stroke="var(--accent)" stroke-width="1" />
+            </svg>
+          </div>
+          <a href="pages/capitulos/index.html">Capítulos</a>
+        </div>
+        <div class="nav-cell">
+          <div class="nav-cell__art" aria-hidden="true">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <circle cx="22" cy="20" r="7" stroke="var(--accent)" stroke-width="1.2" fill="none" />
+              <path d="M15 34 Q22 28 29 34" stroke="var(--accent)" stroke-width="1" fill="none" />
+              <circle cx="38" cy="22" r="6" stroke="var(--text2)" stroke-width="1" fill="none" />
+              <path d="M33 33 Q38 29 43 33" stroke="var(--text2)" stroke-width="0.9" fill="none" />
+              <path d="M8 46 L48 46" stroke="var(--border)" stroke-width="0.8" />
+            </svg>
+          </div>
+          <a href="pages/personagens/index.html">Personagens</a>
+        </div>
+        <div class="nav-cell">
+          <div class="nav-cell__art" aria-hidden="true">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <path d="M12 14 L44 14 L40 42 L16 42 Z" stroke="var(--accent)" stroke-width="1.2" fill="var(--bg3)" opacity="0.5" />
+              <path d="M18 22 L38 22 M18 28 L34 28 M18 34 L36 34" stroke="var(--text2)" stroke-width="0.8" />
+              <circle cx="28" cy="48" r="3" stroke="var(--accent)" stroke-width="1" fill="none" />
+            </svg>
+          </div>
+          <a href="pages/topicos.html">Tópicos</a>
+        </div>
+      </nav>
+
+      <svg
+        class="torn-divider"
+        viewBox="0 0 1200 40"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <polyline
+          fill="none"
+          stroke="var(--border)"
+          stroke-width="1"
+          points="0,18 40,22 72,14 110,24 150,12 195,26 230,16 280,28 320,14 360,24 400,18 440,26 480,12 520,22 560,16 600,26 640,14 680,24 720,20 760,28 800,14 840,22 880,18 920,26 960,12 1000,24 1040,16 1080,26 1120,14 1160,22 1200,18"
+        />
+      </svg>
+
+      <footer class="site-footer">Este livro cresce. Volte sempre.</footer>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

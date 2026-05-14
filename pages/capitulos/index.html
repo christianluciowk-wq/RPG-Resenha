@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capítulos — Os Sete Amaldiçoados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;700&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/global.css" />
+  </head>
+  <body data-chapter-base="">
+    <div class="controls-fixed" aria-label="Controles de leitura">
+      <button type="button" id="btn-font-minus" aria-label="Diminuir fonte">−</button>
+      <button type="button" id="btn-font-plus" aria-label="Aumentar fonte">+</button>
+      <button type="button" id="btn-theme">☀ Modo Claro</button>
+      <a class="btn-home" href="../../index.html">← Início</a>
+    </div>
+
+    <main class="home-main">
+      <h1 class="home-title" style="font-size: clamp(1.5rem, 4vw, 2.2rem); margin-bottom: 8px">
+        <span class="t1">Capítulos</span>
+      </h1>
+      <p class="home-sub" style="margin-bottom: 32px">Índice do grimório — escolha uma página para ler.</p>
+
+      <section id="chapters" class="chapters-section">
+        <h2>Lista</h2>
+        <ul id="chapter-list" class="chapter-list"></ul>
+      </section>
+
+      <footer class="site-footer">Este livro cresce. Volte sempre.</footer>
+    </main>
+
+    <script src="../../js/main.js"></script>
+  </body>
+</html>

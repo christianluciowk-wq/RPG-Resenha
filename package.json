@@ -1,0 +1,6 @@
+{
+  "name": "os-sete-amaldiçoados",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Grimório estático + API opcional de comentários (Vercel)"
+}

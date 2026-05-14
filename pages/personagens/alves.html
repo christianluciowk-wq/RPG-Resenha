@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alves, o Cartógrafo do Vão — Os Sete Amaldiçoados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;700&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/global.css" />
+  </head>
+  <body>
+    <div class="controls-fixed" aria-label="Controles de leitura">
+      <button type="button" id="btn-font-minus" aria-label="Diminuir fonte">−</button>
+      <button type="button" id="btn-font-plus" aria-label="Aumentar fonte">+</button>
+      <button type="button" id="btn-theme">☀ Modo Claro</button>
+      <a class="btn-home" href="../../index.html">← Início</a>
+    </div>
+
+    <main class="content-page wanted-file-page">
+      <p class="wanted-breadcrumb">
+        <a href="../../index.html">Início</a> · <a href="index.html">Personagens</a>
+      </p>
+
+      <article class="wanted-poster" aria-labelledby="nome-alvo">
+        <p class="wanted-poster__banner">Território em vigília — mandado civil</p>
+        <p class="wanted-poster__title">Procurado</p>
+        <p class="wanted-poster__stamp">Válido enquanto a névoa registrar passos</p>
+        <div class="wanted-poster__frame">
+          <img
+            class="wanted-poster__photo"
+            src="../../images/personagens/alves.jpg"
+            alt="Retrato de Alves, o Cartógrafo do Vão"
+            width="220"
+            height="275"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <h1 id="nome-alvo" class="wanted-poster__name">Alves, o Cartógrafo do Vão</h1>
+        <p class="wanted-poster__aliases">Também citado como: “Quem mede o vão”</p>
+        <dl class="wanted-poster__facts">
+          <div>
+            <dt>Acusação</dt>
+            <dd>Traçar rotas que existem antes do chão e assinar laivos com tinta que some ao secar.</dd>
+          </div>
+          <div>
+            <dt>Recompensa</dt>
+            <dd>Uma única fronteira que não minta por omissão — ou silêncio equivalente.</dd>
+          </div>
+        </dl>
+        <p class="wanted-poster__footer">Não colar sobre mapas oficiais. O papel reage.</p>
+      </article>
+
+      <section class="wanted-dossier" aria-label="Descrição e notas">
+        <h2>Descrição</h2>
+        <p>
+          Alves age como quem negocia com o terreno em vez de medi-lo. Suas cartas
+          guardam vazios deliberados: espaços onde o leitor projeta medo. Dizem que
+          ele só sorri quando uma rota falha no mundo real e acerta no manuscrito.
+        </p>
+        <h2>Pontos</h2>
+        <ul class="wanted-pontos">
+          <li><strong>Ofício:</strong> cartografia ritual; correção de “erros” que a história cometeu contra o terreno.</li>
+          <li><strong>Marca:</strong> círculos incompletos nos cantos dos mapas, sempre com um traço vertical no centro.</li>
+          <li><strong>Medo:</strong> que alguém complete o círculo sem pedir licença à névoa.</li>
+          <li><strong>Vínculo:</strong> devedor de favores a quem guarda a Fratura nos arquivos molhados.</li>
+        </ul>
+      </section>
+    </main>
+
+    <section class="comments-section" id="comments-root">
+      <h2>Comentários</h2>
+      <form id="comment-form" class="comment-form">
+        <div>
+          <label for="comment-name">Nome do leitor</label>
+          <input
+            type="text"
+            id="comment-name"
+            name="comment-name"
+            maxlength="40"
+            autocomplete="nickname"
+            placeholder="Como deseja ser chamado"
+          />
+        </div>
+        <div>
+          <span class="stars-caption">Avaliação</span>
+          <div class="star-row" id="comment-stars" aria-label="Estrelas"></div>
+        </div>
+        <div>
+          <label for="comment-text">Comentário</label>
+          <textarea
+            id="comment-text"
+            name="comment-text"
+            maxlength="500"
+            placeholder="Até 500 caracteres"
+          ></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Enviar comentário</button>
+      </form>
+      <div id="comment-list" class="comment-list"></div>
+    </section>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/site-config.js"></script>
+    <script src="../../js/comments.js"></script>
+  </body>
+</html>

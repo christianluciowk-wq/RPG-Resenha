@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tópicos de lore — Os Sete Amaldiçoados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;700&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/global.css" />
+  </head>
+  <body>
+    <div class="controls-fixed" aria-label="Controles de leitura">
+      <button type="button" id="btn-font-minus" aria-label="Diminuir fonte">−</button>
+      <button type="button" id="btn-font-plus" aria-label="Aumentar fonte">+</button>
+      <button type="button" id="btn-theme">☀ Modo Claro</button>
+      <a class="btn-home" href="../index.html">← Início</a>
+    </div>
+
+    <main class="content-page">
+      <h1>Tópicos</h1>
+      <p class="lead">Cordas que sustentam o mundo quando a lógica falha.</p>
+
+      <h2>A Fratura</h2>
+      <p>
+        Não é um evento único: é um <em>hábito</em> do espaço. Onde a Fratura
+        passa, causas podem chegar depois dos efeitos e mapas precisam de
+        legendas emocionais, não só métricas.
+      </p>
+
+      <h2>O Livro</h2>
+      <p>
+        Dizem que este grimório online é uma extensão do manuscrito original —
+        que cada clique vira uma dobra na página, e cada tema salvo, uma
+        postura diferente de leitura sob o mesmo texto.
+      </p>
+
+      <h2>Sete assinaturas</h2>
+      <p>
+        O número não é simbólico: é <span class="censurado">contagem exata</span>.
+        Quando alguém tenta adicionar um oitavo nome, o papel aprende a sangrar
+        em silêncio.
+      </p>
+    </main>
+
+    <section class="comments-section" id="comments-root">
+      <h2>Comentários</h2>
+      <form id="comment-form" class="comment-form">
+        <div>
+          <label for="comment-name">Nome do leitor</label>
+          <input
+            type="text"
+            id="comment-name"
+            name="comment-name"
+            maxlength="40"
+            autocomplete="nickname"
+            placeholder="Como deseja ser chamado"
+          />
+        </div>
+        <div>
+          <span class="stars-caption">Avaliação</span>
+          <div class="star-row" id="comment-stars" aria-label="Estrelas"></div>
+        </div>
+        <div>
+          <label for="comment-text">Comentário</label>
+          <textarea
+            id="comment-text"
+            name="comment-text"
+            maxlength="500"
+            placeholder="Até 500 caracteres"
+          ></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Enviar comentário</button>
+      </form>
+      <div id="comment-list" class="comment-list"></div>
+    </section>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/site-config.js"></script>
+    <script src="../js/comments.js"></script>
+  </body>
+</html>
