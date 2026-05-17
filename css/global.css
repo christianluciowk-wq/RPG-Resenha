@@ -8,31 +8,31 @@
 }
 
 html[data-theme="dark"] {
-  --bg: #05080f;
-  --bg2: #0a0f1a;
-  --bg3: #0f1828;
-  --text: #d0dff0;
-  --text2: #6a7f9a;
-  --accent: #1a6aaf;
-  --accent2: #0d3d6b;
-  --border: #1a2a3a;
-  --glow: rgba(26, 106, 175, 0.25);
+  --bg: #0c0a08;
+  --bg2: #1a1510;
+  --bg3: #282018;
+  --text: #f0e6d0;
+  --text2: #9a8a70;
+  --accent: #d35400;
+  --accent2: #6b3d0d;
+  --border: #3a2e20;
+  --glow: rgba(211, 84, 0, 0.25);
   --small-btn-bg: var(--bg2);
   --nav-grid-bg: var(--bg2);
 }
 
 html[data-theme="light"] {
-  --bg: #f0f4fa;
-  --bg2: #e4ecf5;
-  --bg3: #d8e5f0;
-  --text: #0a1520;
-  --text2: #3a5070;
-  --accent: #1557a0;
-  --accent2: #0d3d6b;
-  --border: #a0b8d0;
-  --glow: rgba(21, 87, 160, 0.12);
-  --small-btn-bg: #eef4fb;
-  --nav-grid-bg: #f2f7fc;
+  --bg: #faf6f0;
+  --bg2: #f5ece4;
+  --bg3: #f0e5d8;
+  --text: #20180a;
+  --text2: #70583a;
+  --accent: #a05715;
+  --accent2: #6b3d0d;
+  --border: #d0c0a0;
+  --glow: rgba(160, 87, 21, 0.12);
+  --small-btn-bg: #f8efe8;
+  --nav-grid-bg: #fcf9f2;
 }
 
 *,
@@ -85,7 +85,7 @@ a:hover {
   font-family: var(--font-title);
   font-size: 0.75rem;
   padding: 8px 12px;
-  border-radius: 6px;
+  border-radius: 2px;
   border: 0.5px solid var(--border);
   background: var(--small-btn-bg);
   color: var(--text);
@@ -158,7 +158,7 @@ a:hover {
   margin: 0 auto 32px;
   max-width: 420px;
   padding: 16px 20px;
-  border-radius: 12px;
+  border-radius: 4px;
   border: 0.5px solid var(--accent);
   background: var(--bg2);
   cursor: pointer;
@@ -209,7 +209,7 @@ a:hover {
   justify-content: center;
   min-height: 84px;
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 2px;
   border: 0.5px solid var(--border);
   background: var(--bg3);
 }
@@ -220,7 +220,7 @@ a:hover {
   justify-content: center;
   text-align: center;
   padding: 14px 12px;
-  border-radius: 6px;
+  border-radius: 2px;
   border: 0.5px solid var(--border);
   background: var(--nav-grid-bg);
   color: var(--text);
@@ -268,7 +268,7 @@ a:hover {
 .chapter-list a.chapter-link {
   display: block;
   padding: 16px 18px;
-  border-radius: 12px;
+  border-radius: 4px;
   border: 0.5px solid var(--border);
   background: var(--bg2);
   color: var(--text);
@@ -325,7 +325,7 @@ a:hover {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 4px 8px;
-  border-radius: 6px;
+  border-radius: 2px;
   border: 0.5px solid var(--border);
   color: var(--text2);
 }
@@ -437,13 +437,13 @@ a:hover {
 }
 
 .personagem-index__thumb {
+  width: 100px;
+  height: 125px;
   flex-shrink: 0;
-  width: 72px;
-  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
+  border-radius: 2px;
   border: 0.5px solid var(--border);
   background: var(--bg3);
   overflow: hidden;
@@ -698,7 +698,7 @@ a:hover {
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 4px;
+  border-radius: 0;
   filter: sepia(0.25) contrast(1.02);
 }
 
@@ -769,166 +769,34 @@ a:hover {
   );
 }
 
-.comments-section {
+.contact-section {
   margin-top: 48px;
-  padding-top: 32px;
+  padding: 32px 24px 64px;
   border-top: 0.5px solid var(--border);
+  text-align: center;
 }
 
-.chapter-page + .comments-section {
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 24px 48px;
-}
-
-.content-page + .comments-section {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 24px 48px;
-}
-
-.wanted-file-page + .comments-section {
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 24px 48px;
-}
-
-.comments-section h2 {
+.contact-btn {
+  display: inline-block;
   font-family: var(--font-title);
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-size: 0.85rem;
-  color: var(--text2);
-  margin: 0 0 20px;
-}
-
-.comment-form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 28px;
-}
-
-.comment-form label,
-.comment-form .stars-caption {
-  font-family: var(--font-title);
-  font-size: 0.75rem;
-  color: var(--text2);
-  display: block;
-  margin-bottom: 6px;
-}
-
-.comment-form input[type="text"],
-.comment-form textarea {
-  width: 100%;
-  background: var(--bg2);
-  border: 0.5px solid var(--border);
-  border-radius: 8px;
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  padding: 10px 12px;
-  outline: none;
-}
-
-.comment-form input[type="text"]:focus,
-.comment-form textarea:focus {
-  border-color: var(--accent);
-}
-
-.comment-form textarea {
-  min-height: 90px;
-  resize: vertical;
-}
-
-.star-row {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-
-.star-row button.star {
-  font-family: var(--font-title);
-  font-size: 1.4rem;
-  line-height: 1;
-  padding: 4px 6px;
-  border: none;
-  background: transparent;
-  color: var(--border);
-  cursor: pointer;
-  transition: color 0.12s ease, transform 0.12s ease;
-}
-
-.star-row button.star.active,
-.star-row button.star:hover {
-  color: var(--accent);
-}
-
-.comment-form .submit-btn {
-  align-self: flex-start;
-  font-family: var(--font-title);
-  font-size: 0.85rem;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 12px 24px;
   border: 0.5px solid var(--accent);
   background: transparent;
   color: var(--text);
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.2s ease;
 }
 
-.comment-form .submit-btn:hover {
+.contact-btn:hover {
   background: var(--accent);
   color: var(--bg);
-}
-
-.comment-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.comment-card {
-  padding: 16px;
-  border-radius: 10px;
-  border: 0.5px solid var(--border);
-  background: var(--bg2);
-}
-
-.comment-card .author {
-  font-family: var(--font-title);
-  color: var(--accent);
-  font-size: 0.95rem;
-  margin-bottom: 6px;
-}
-
-.comment-card .stars {
-  color: var(--accent);
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-}
-
-.comment-card .stars .empty {
-  color: var(--border);
-}
-
-.comment-card .stars .full {
-  color: var(--accent);
-}
-
-.comment-card .body {
-  margin-bottom: 8px;
-  line-height: 1.6;
-}
-
-.comment-card .date {
-  font-size: 0.8rem;
-  color: var(--text2);
-  font-style: italic;
+  box-shadow: 0 0 15px var(--glow);
+  transform: translateY(-2px);
+  text-decoration: none;
 }
 
 .text-muted {

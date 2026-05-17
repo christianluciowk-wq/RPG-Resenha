@@ -1,58 +1,26 @@
 /**
- * Os Sete Amaldiçoados — lógica global (tema, fonte, capítulos, progresso).
- * Capítulos vivem em /pages/capitulos/; URLs canônicas usam sempre esse prefixo
- * para o cartão “Continuar lendo” e para marcar “lido” de qualquer página.
+ * Tema, fonte, lista de capítulos, lista de personagens (dados em js/catalog.js), progresso de leitura.
  */
 (function () {
   "use strict";
 
-  /** Prefixo fixo a partir da raiz do site (para localStorage e último capítulo). */
-  const CHAPTER_DIR = "pages/capitulos/";
+  var CHAPTER_DIR = "pages/capitulos/";
+  var caps = (window.CATALOGO && window.CATALOGO.capitulos) || [];
 
-  /**
-   * Cadastro único de capítulos. `file` é só o nome do arquivo dentro da pasta capitulos.
-   * @type {{ num: string, title: string, meta: string, status: 'novo'|'breve', file: string }[]}
-   */
-  const CHAPTERS = [
-    {
-      num: "I",
-      title: "Onde o silêncio tem dentes",
-      meta: "Era da Fratura — Prólogo",
-      status: "novo",
-      file: "cap-01.html",
-    },
-    {
-      num: "II",
-      title: "Cartas na mesa do abismo",
-      meta: "Era da Fratura — Arco do Pacto",
-      status: "breve",
-      file: "cap-02.html",
-    },
-  ];
+  var LS_THEME = "sete_theme";
+  var LS_FONT = "sete_font_size";
+  var LS_READ = "sete_read_hrefs";
+  var LS_LAST = "sete_last_read";
 
-  const LS_THEME = "sete_theme";
-  const LS_FONT = "sete_font_size";
-  const LS_READ = "sete_read_hrefs";
-  const LS_LAST = "sete_last_read";
-
-  /** href canônico usado em progresso / “lido” (sempre a partir da raiz do site). */
   function canonicalChapterHref(file) {
     return CHAPTER_DIR + file;
   }
 
-  /**
-   * Prefixo para links na lista atual: em `pages/capitulos/index.html` use `data-chapter-base=""`.
-   * Em outras páginas, omita o atributo para cair no padrão `pages/capitulos/`.
-   */
   function chapterLinkPrefix() {
     var raw = document.body.getAttribute("data-chapter-base");
-    if (raw !== null) {
-      return raw;
-    }
-    return CHAPTER_DIR;
+    return raw !== null ? raw : CHAPTER_DIR;
   }
 
-  /** Migra progresso antigo (antes da pasta `capitulos/`). */
   function migrateLegacyChapterPaths() {
     try {
       var map = {
@@ -62,10 +30,7 @@
       var raw = localStorage.getItem(LS_READ);
       var arr = raw ? JSON.parse(raw) : [];
       if (!Array.isArray(arr)) return;
-      var next = arr.map(function (h) {
-        return map[h] || h;
-      });
-      localStorage.setItem(LS_READ, JSON.stringify(next));
+      localStorage.setItem(LS_READ, JSON.stringify(arr.map(function (h) { return map[h] || h; })));
       var lastRaw = localStorage.getItem(LS_LAST);
       if (!lastRaw) return;
       var last = JSON.parse(lastRaw);
@@ -90,7 +55,7 @@
     localStorage.setItem(LS_READ, JSON.stringify(Array.from(set)));
   }
 
-  function markRead(index, title, canonicalHref) {
+  function markRead(title, canonicalHref) {
     var set = getReadSet();
     set.add(canonicalHref);
     saveReadSet(set);
@@ -115,12 +80,10 @@
   function renderChapters() {
     var ul = document.getElementById("chapter-list");
     if (!ul) return;
-
     var read = getReadSet();
     ul.innerHTML = "";
     var linkPrefix = chapterLinkPrefix();
-
-    CHAPTERS.forEach(function (ch, index) {
+    caps.forEach(function (ch) {
       var li = document.createElement("li");
       var isBreve = ch.status === "breve";
       var canonical = canonicalChapterHref(ch.file);
@@ -129,39 +92,25 @@
       a.className = "chapter-link" + (isBreve ? " disabled" : "");
       var href = isBreve ? "#" : linkPrefix + ch.file;
       a.href = href;
-
       if (!isBreve) {
         a.addEventListener("click", function (e) {
           e.preventDefault();
-          markRead(index, ch.title, canonical);
+          markRead(ch.title, canonical);
           window.location.href = href;
         });
       }
-
       var rowTop = document.createElement("div");
       rowTop.className = "row-top";
       rowTop.innerHTML =
-        '<span class="num">' +
-        escapeHtml(ch.num) +
-        '</span><span class="ctitle">' +
-        escapeHtml(ch.title) +
-        "</span>";
-
+        '<span class="num">' + escapeHtml(ch.num) + '</span><span class="ctitle">' + escapeHtml(ch.title) + "</span>";
       var meta = document.createElement("div");
       meta.className = "meta";
       meta.textContent = ch.meta;
-
       var badges = document.createElement("div");
       badges.className = "badges";
-
-      if (isBreve) {
-        badges.innerHTML += '<span class="badge breve">em breve</span>';
-      } else if (wasRead) {
-        badges.innerHTML += '<span class="badge lido">lido</span>';
-      } else if (ch.status === "novo") {
-        badges.innerHTML += '<span class="badge novo">novo</span>';
-      }
-
+      if (isBreve) badges.innerHTML += '<span class="badge breve">em breve</span>';
+      else if (wasRead) badges.innerHTML += '<span class="badge lido">lido</span>';
+      else if (ch.status === "novo") badges.innerHTML += '<span class="badge novo">novo</span>';
       a.appendChild(rowTop);
       a.appendChild(meta);
       if (badges.innerHTML) a.appendChild(badges);
@@ -170,32 +119,61 @@
     });
   }
 
+  /** Monta a lista de personagens a partir de CATALOGO.personagensPorEra */
+  function renderPersonagens() {
+    var root = document.getElementById("personagens-root");
+    var grupos = window.CATALOGO && window.CATALOGO.personagensPorEra;
+    if (!root || !grupos) return;
+    root.innerHTML = "";
+    grupos.forEach(function (bloco) {
+      var h2 = document.createElement("h2");
+      h2.textContent = bloco.era;
+      root.appendChild(h2);
+      var ul = document.createElement("ul");
+      ul.className = "personagem-index";
+      ul.setAttribute("role", "list");
+      (bloco.lista || []).forEach(function (p) {
+        var li = document.createElement("li");
+        li.className = "personagem-index__item";
+        li.innerHTML =
+          '<div class="personagem-index__thumb"><img src="../../images/personagens/' +
+          escapeHtml(p.img) +
+          '" alt="' +
+          escapeHtml(p.nome) +
+          '" width="72" height="72" loading="lazy" decoding="async" /></div>' +
+          '<div class="personagem-index__body">' +
+          '<a class="personagem-index__name" href="' +
+          escapeHtml(p.file) +
+          '">' +
+          escapeHtml(p.nome) +
+          "</a>" +
+          '<p class="personagem-index__desc">' +
+          escapeHtml(p.desc) +
+          "</p></div>";
+        ul.appendChild(li);
+      });
+      root.appendChild(ul);
+    });
+  }
+
   function checkContinue() {
     var card = document.getElementById("continue-card");
     if (!card) return;
-
     var last = getLastRead();
     if (!last || !last.title || !last.href) return;
-
     card.classList.add("visible");
     var titleEl = card.querySelector(".chapter-title");
     if (titleEl) titleEl.textContent = last.title;
-    card.dataset.href = last.href;
   }
 
   function continueReading() {
     var last = getLastRead();
-    if (last && last.href) {
-      window.location.href = last.href;
-    }
+    if (last && last.href) window.location.href = last.href;
   }
 
   function changeFont(delta) {
     var root = document.documentElement;
-    var current = parseInt(
-      getComputedStyle(root).getPropertyValue("--font-size").trim(),
-      10
-    );
+    var current = parseInt(getComputedStyle(root).getPropertyValue("--font-size").trim(), 10);
     var base = Number.isFinite(current) ? current : 16;
     var next = Math.min(24, Math.max(13, base + delta));
     root.style.setProperty("--font-size", next + "px");
@@ -220,11 +198,7 @@
 
   function applySavedTheme() {
     var t = localStorage.getItem(LS_THEME);
-    if (t === "light" || t === "dark") {
-      document.documentElement.setAttribute("data-theme", t);
-    } else {
-      document.documentElement.setAttribute("data-theme", "dark");
-    }
+    document.documentElement.setAttribute("data-theme", t === "light" || t === "dark" ? t : "dark");
   }
 
   function updateThemeButtonText() {
@@ -235,19 +209,12 @@
   }
 
   function bindControls() {
-    document.getElementById("btn-font-minus")?.addEventListener("click", function () {
-      changeFont(-1);
-    });
-    document.getElementById("btn-font-plus")?.addEventListener("click", function () {
-      changeFont(1);
-    });
+    document.getElementById("btn-font-minus")?.addEventListener("click", function () { changeFont(-1); });
+    document.getElementById("btn-font-plus")?.addEventListener("click", function () { changeFont(1); });
     document.getElementById("btn-theme")?.addEventListener("click", toggleTheme);
-
     var cont = document.getElementById("continue-card");
     if (cont) {
-      cont.addEventListener("click", function () {
-        continueReading();
-      });
+      cont.addEventListener("click", continueReading);
       cont.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -264,12 +231,10 @@
     updateThemeButtonText();
     bindControls();
     renderChapters();
+    renderPersonagens();
     checkContinue();
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();

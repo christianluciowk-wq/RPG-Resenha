@@ -1,9 +1,15 @@
+<!--
+  NOVO CAPÍTULO:
+  1) Em js/catalog.js → capitulos, adicione { num, title, meta, status, file: "cap-XX.html" }
+  2) Salve esta página como pages/capitulos/cap-XX.html
+  3) Troque __TITULO__, __META_ROMANO_E_ERA__ e o conteúdo dentro de <article>
+-->
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personagens — Os Sete Amaldiçoados</title>
+    <title>__TITULO__ — Os Sete Amaldiçoados</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,19 +20,19 @@
   </head>
   <body>
     <div class="controls-fixed" aria-label="Controles de leitura">
-      <button type="button" id="btn-font-minus" aria-label="Diminuir fonte">−</button>
-      <button type="button" id="btn-font-plus" aria-label="Aumentar fonte">+</button>
+      <button type="button" id="btn-font-minus">−</button>
+      <button type="button" id="btn-font-plus">+</button>
       <button type="button" id="btn-theme">☀ Modo Claro</button>
       <a class="btn-home" href="../../index.html">← Início</a>
     </div>
-
-    <main class="content-page">
-      <h1>Personagens</h1>
-      <p class="lead">Cada nome abre um mandado. Novos nomes: edite só <code>js/catalog.js</code> e copie <code>templates/personagem.html</code>.</p>
-      <div id="personagens-root"></div>
-    </main>
-
-    <script src="../../js/catalog.js"></script>
+    <article class="chapter-page">
+      <h1>__TITULO__</h1>
+      <p class="cap-meta">__META_ROMANO_E_ERA__</p>
+      <p>Escreva o capítulo aqui.</p>
+    </article>
+    <section class="contact-section">
+      <a href="mailto:seu-email@exemplo.com" class="contact-btn">Contate-me</a>
+    </section>
     <script src="../../js/main.js"></script>
   </body>
 </html>

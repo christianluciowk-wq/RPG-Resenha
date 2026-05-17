@@ -2,5 +2,12 @@
   "name": "os-sete-amaldiçoados",
   "private": true,
   "version": "1.0.0",
-  "description": "Grimório estático + API opcional de comentários (Vercel)"
+  "description": "Grimório estático + servidor Node/MySQL para comentários",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  }
 }
