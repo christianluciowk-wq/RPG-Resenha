@@ -1,5 +1,5 @@
 /**
- * Tema, fonte, lista de capítulos, lista de personagens (dados em js/catalog.js), progresso de leitura.
+ * Tema, fonte, lista de capítulos, atualizações e anotações (dados em js/catalog.js), progresso de leitura.
  */
 (function () {
   "use strict";
@@ -119,40 +119,41 @@
     });
   }
 
-  /** Monta a lista de personagens a partir de CATALOGO.personagensPorEra */
-  function renderPersonagens() {
-    var root = document.getElementById("personagens-root");
-    var grupos = window.CATALOGO && window.CATALOGO.personagensPorEra;
-    if (!root || !grupos) return;
+  /** Monta a lista de atualizações */
+  function renderAtualizacoes() {
+    var root = document.getElementById("atualizacoes-root");
+    var lista = window.CATALOGO && window.CATALOGO.atualizacoes;
+    if (!root || !lista) return;
     root.innerHTML = "";
-    grupos.forEach(function (bloco) {
-      var h2 = document.createElement("h2");
-      h2.textContent = bloco.era;
-      root.appendChild(h2);
-      var ul = document.createElement("ul");
-      ul.className = "personagem-index";
-      ul.setAttribute("role", "list");
-      (bloco.lista || []).forEach(function (p) {
-        var li = document.createElement("li");
-        li.className = "personagem-index__item";
-        li.innerHTML =
-          '<div class="personagem-index__thumb"><img src="../../images/personagens/' +
-          escapeHtml(p.img) +
-          '" alt="' +
-          escapeHtml(p.nome) +
-          '" width="72" height="72" loading="lazy" decoding="async" /></div>' +
-          '<div class="personagem-index__body">' +
-          '<a class="personagem-index__name" href="' +
-          escapeHtml(p.file) +
-          '">' +
-          escapeHtml(p.nome) +
-          "</a>" +
-          '<p class="personagem-index__desc">' +
-          escapeHtml(p.desc) +
-          "</p></div>";
-        ul.appendChild(li);
-      });
-      root.appendChild(ul);
+    var ul = document.createElement("ul");
+    ul.className = "updates-list";
+    lista.forEach(function (upd) {
+      var li = document.createElement("li");
+      li.className = "update-item";
+      li.innerHTML =
+        '<div class="update-meta">' +
+        '<span class="update-date">' + escapeHtml(upd.data) + '</span>' +
+        '<span class="update-time">' + escapeHtml(upd.horario) + '</span>' +
+        '</div>' +
+        '<p class="update-desc">' + escapeHtml(upd.descricao) + '</p>';
+      ul.appendChild(li);
+    });
+    root.appendChild(ul);
+  }
+
+  /** Monta a lista de anotações */
+  function renderAnotacoes() {
+    var root = document.getElementById("anotacoes-root");
+    var lista = window.CATALOGO && window.CATALOGO.anotacoes;
+    if (!root || !lista) return;
+    root.innerHTML = "";
+    lista.forEach(function (anot) {
+      var section = document.createElement("section");
+      section.className = "note-item";
+      section.innerHTML =
+        '<h2>' + escapeHtml(anot.titulo) + '</h2>' +
+        '<p>' + escapeHtml(anot.texto) + '</p>';
+      root.appendChild(section);
     });
   }
 
@@ -231,7 +232,8 @@
     updateThemeButtonText();
     bindControls();
     renderChapters();
-    renderPersonagens();
+    renderAtualizacoes();
+    renderAnotacoes();
     checkContinue();
   }
 

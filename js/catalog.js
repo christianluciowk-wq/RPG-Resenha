@@ -1,63 +1,43 @@
 /**
- * Único lugar para cadastrar capítulos e personagens.
- * Novo capítulo: 1) acrescente um objeto em capitulos  2) copie templates/capitulo.html → pages/capitulos/cap-XX.html e troque __TITULO__, __META__, __CONTEUDO__.
- * Novo personagem: 1) acrescente em personagensPorEra → lista  2) copie templates/personagem.html → pages/personagens/<id>.html e troque os __...__.
+ * Único lugar para cadastrar capítulos, atualizações e anotações.
  */
 window.CATALOGO = {
   capitulos: [
     {
-      num: "I-I",
-      title: "Boas-vindas não muito amigável",
-      meta: "Era da Primeira Quebra, Prólogo",
+      num: "I",
+      title: "Onde o silêncio tem dentes",
+      meta: "Era da Fratura — Prólogo",
       status: "novo",
       file: "cap-1-01.html",
     },
     {
-      num: "I-II",
+      num: "II",
       title: "Cartas na mesa do abismo",
-      meta: "Era da Primeira Quebra, Capítulo II",
+      meta: "Era da Fratura — Arco do Pacto",
       status: "breve",
-      file: "cap-1-02.html",
+      file: "cap-02.html",
     },
   ],
-  personagensPorEra: [
+  atualizacoes: [
     {
-      era: "Era da Fratura",
-      lista: [
-        {
-          id: "alves",
-          nome: "Alves, o Cartógrafo do Vão",
-          desc: "Homem de tinta que some e mapas que mentem por omissão; assina tudo como quem desafia o silêncio.",
-          file: "alves.html",
-          img: "alves.jpg",
-        },
-        {
-          id: "mira",
-          nome: "Mira Duschene",
-          desc: "Cirurgiã de memória ritual: vende esquecimento como piedade, mas nunca se aplica o remédio a si.",
-          file: "mira.html",
-          img: "mira.jpg",
-        },
-      ],
+      data: "2026-05-17",
+      horario: "18:30",
+      descricao: "Refatoração completa do sistema de navegação e remoção do antigo sistema de comentários.",
     },
     {
-      era: "Era do Pacto Quebrado",
-      lista: [
-        {
-          id: "arquivista",
-          nome: "O Arquivista Sem Olhos",
-          desc: "Entidade ou cargo: comparece quando um título já apagado do mundo é pronunciado em voz alta.",
-          file: "arquivista.html",
-          img: "arquivista.jpg",
-        },
-        {
-          id: "nomes-rasurados",
-          nome: "Sete nomes rasurados",
-          desc: "Manchas no papel onde deveriam haver assinaturas; a contagem não admite um oitavo nome.",
-          file: "nomes-rasurados.html",
-          img: "nomes-rasurados.jpg",
-        },
-      ],
-    },
+      data: "2026-05-17",
+      horario: "14:15",
+      descricao: "Ajuste na paleta de cores para tons alaranjados e botões mais quadrados.",
+    }
   ],
+  anotacoes: [
+    {
+      titulo: "A Fratura",
+      texto: "Não é um evento único: é um hábito do espaço. Onde a Fratura passa, causas podem chegar depois dos efeitos.",
+    },
+    {
+      titulo: "O Livro",
+      texto: "Este grimório online é uma extensão do manuscrito original. Cada clique é uma dobra na página.",
+    }
+  ]
 };
